@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Disaster Prediction using AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #4CAF50, #2c7a2b), url('C:\Users\user\Desktop\1ST YEAR\Project\Gemini_Generated_Image_5s5jvf5s5jvf5s5j.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+        nav {
+            background-color: #333;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+        section {
+            padding: 60px 20px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        section:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            font-size: 2rem;
+            color: #4CAF50;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            section {
+                padding: 40px 10px;
+            }
+            nav {
+                display: flex;
+                flex-direction: column;
+            }
+            nav a {
+                padding: 10px;
+            }
+        }
+
+        /* Mobile-Friendly Navigation Menu (Hamburger Style) */
+        .menu-toggle {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+                color: white;
+                font-size: 1.5rem;
+                padding: 14px 20px;
+                background-color: #333;
+            }
+            nav a {
+                display: none;
+                padding: 10px;
+            }
+            nav.open a {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Disaster Prediction Using AI Models</h1>
+    <p>Predicting Natural Disasters with Artificial Intelligence & Machine Learning</p>
+</header>
+
+<nav>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <a href="#home">Home</a>
+    <a href="#methodology">Methodology</a>
+    <a href="#ai">AI Techniques</a>
+    <a href="#case">Case Studies</a>
+    <a href="#future">Future Trends</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+    <h2>Introduction</h2>
+    <p>Natural disasters like earthquakes, floods, and hurricanes cause huge losses worldwide. Artificial Intelligence (AI) and Machine Learning (ML) can help predict these events and save lives through early warnings and efficient disaster management.</p>
+</section>
+
+<section id="methodology">
+    <h2>Methodology</h2>
+    <p>The process involves collecting historical data (weather, satellite, seismic), preprocessing it, extracting features, choosing algorithms like Decision Trees or Neural Networks, and training models to predict disaster occurrences.</p>
+</section>
+
+<section id="ai">
+    <h2>AI Techniques</h2>
+    <ul>
+        <li><strong>Machine Learning:</strong> Decision Trees, Random Forest, Support Vector Machines (SVM)</li>
+        <li><strong>Deep Learning:</strong> CNNs for image data, LSTMs for time-series and social media analysis</li>
+        <li><strong>Tools Used:</strong> Satellite data, IoT, UAVs, Social Media</li>
+    </ul>
+</section>
+
+<section id="case">
+    <h2>Case Studies</h2>
+    <ul>
+        <li><strong>Houston Floods (2020):</strong> Neural Networks predicted floods using rainfall data.</li>
+        <li><strong>Japan Earthquake Alerts:</strong> SVMs helped forecast seismic events in real-time.</li>
+        <li><strong>Hurricanes in the Caribbean:</strong> CNNs analyzed satellite data to predict storm paths.</li>
+        <li><strong>Kerala Flood Relief:</strong> Big Data & AI on AWS improved rescue coordination.</li>
+    </ul>
+</section>
+
+<section id="future">
+    <h2>Future Trends & Challenges</h2>
+    <p>More research is needed in long-term disaster recovery using ML/DL. Challenges include lack of labeled data, noisy social media, and ensuring ethical, transparent AI systems. Crowdsourcing and web crawling can improve data collection.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: yourname@example.com</p>
+    <p>Phone: +91-12345-67890</p>
+    <p>Institution: NMAM Institute of Technology</p>
+</section>
+
+<footer>
+    <p>© 2025 Disaster AI Project | All rights reserved</p>
+</footer>
+
+<script>
+    // Toggle Menu for Mobile View
+    function toggleMenu() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>
