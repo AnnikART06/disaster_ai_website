@@ -2,183 +2,269 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Disaster Prediction using AI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Research on using Deep Learning for Natural Disasters Detection and Management">
+    <meta name="keywords" content="AI, Deep Learning, Disaster Management, CNN, LSTM, Flood Prediction, Cyclone Detection">
+    <title>Natural Disasters Detection Using Deep Learning | NMAMIT Research</title>
+    
+    <!-- Preload important resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" as="style">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+    
     <style>
+        :root {
+            --primary-color: #2c7a7b;
+            --secondary-color: #4fd1c5;
+            --light-bg: #f0f4f5;
+            --dark-text: #333;
+            --white: #fff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
-            background-color: #f2f2f2;
-            color: #333;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
+        
         header {
-            background: linear-gradient(135deg, #4CAF50, #2c7a2b), url('C:\Users\user\Desktop\1ST YEAR\Project\Gemini_Generated_Image_5s5jvf5s5jvf5s5j.jpg') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 60px 20px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 4rem 1.25rem;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-        header p {
-            font-size: 1.2rem;
-        }
+        
         nav {
-            background-color: #333;
-            text-align: center;
-            position: fixed;
-            width: 100%;
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
         nav a {
-            display: inline-block;
-            color: white;
-            padding: 14px 20px;
+            color: var(--white);
             text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: 0.3s;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
         }
-        nav a:hover {
-            background-color: #ddd;
-            color: #333;
+        
+        nav a:hover, nav a:focus {
+            background-color: var(--secondary-color);
+            text-decoration: none;
         }
-        section {
-            padding: 60px 20px;
-            background-color: white;
-            margin: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
+        
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
-        section:hover {
-            transform: translateY(-5px);
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
         }
+        
         h2 {
             font-size: 2rem;
-            color: #4CAF50;
+            margin-top: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
         }
-        footer {
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.625rem 1.25rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+        
+        .intro-section {
             text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
+            margin: 3rem 0;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
         }
-        /* Mobile Responsiveness */
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-            section {
-                padding: 40px 10px;
-            }
-            nav {
-                display: flex;
+            nav ul {
                 flex-direction: column;
+                align-items: center;
             }
-            nav a {
-                padding: 10px;
+            
+            nav li {
+                margin: 0.5rem 0;
             }
-        }
-
-        /* Mobile-Friendly Navigation Menu (Hamburger Style) */
-        .menu-toggle {
-            display: none;
-        }
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-                cursor: pointer;
-                color: white;
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
                 font-size: 1.5rem;
-                padding: 14px 20px;
-                background-color: #333;
-            }
-            nav a {
-                display: none;
-                padding: 10px;
-            }
-            nav.open a {
-                display: block;
             }
         }
     </style>
 </head>
 <body>
+    <header role="banner">
+        <h1>Natural Disasters Detection Using Deep Learning</h1>
+        <p>Exploring the power of AI in predicting and managing disasters</p>
+    </header>
 
-<header>
-    <h1>Disaster Prediction Using AI Models</h1>
-    <p>Predicting Natural Disasters with Artificial Intelligence & Machine Learning</p>
-</header>
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="deep-learning.html">Deep Learning</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="challenges.html">Challenges</a></li>
+            <li><a href="conclusion.html">Conclusion</a></li>
+            <li><a href="references.html">References</a></li>
+        </ul>
+    </nav>
 
-<nav>
-    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-    <a href="#home">Home</a>
-    <a href="#methodology">Methodology</a>
-    <a href="#ai">AI Techniques</a>
-    <a href="#case">Case Studies</a>
-    <a href="#future">Future Trends</a>
-    <a href="#contact">Contact</a>
-</nav>
+    <main class="container">
+        <section class="intro-section" aria-labelledby="welcome-heading">
+            <h2 id="welcome-heading">Welcome to Our Research Project</h2>
+            <p>This project explores the application of deep learning techniques in predicting and managing natural disasters. Our research focuses on developing models that can help mitigate the impact of floods, cyclones, earthquakes, and other natural calamities.</p>
+            <p>Navigate through our findings using the menu above or explore key sections below.</p>
+        </section>
 
-<section id="home">
-    <h2>Introduction</h2>
-    <p>Natural disasters like earthquakes, floods, and hurricanes cause huge losses worldwide. Artificial Intelligence (AI) and Machine Learning (ML) can help predict these events and save lives through early warnings and efficient disaster management.</p>
-</section>
+        <section aria-labelledby="featured-heading">
+            <h2 id="featured-heading">Featured Research Areas</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://raw.githubusercontent.com/Nmamit-Annika/Disaster-management/refs/heads/main/Screenshot%202025-04-22%20175222.png" alt="CNN Architecture Diagram" loading="lazy">
+                    <div class="card-content">
+                        <h3>CNN for Flood Prediction</h3>
+                        <p>Our research demonstrates how Convolutional Neural Networks can accurately predict flood-prone areas with 99% accuracy.</p>
+                        <a href="use-cases.html#flood-modeling" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://raw.githubusercontent.com/Nmamit-Annika/Disaster-management/refs/heads/main/Screenshot%202025-04-22%20175505.png" alt="LSTM Architecture Diagram" loading="lazy">
+                    <div class="card-content">
+                        <h3>LSTM for Disaster Analysis</h3>
+                        <p>Explore how Long Short-Term Memory networks process sequential data for disaster prediction and assessment.</p>
+                        <a href="use-cases.html#lstm-analysis" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="https://raw.githubusercontent.com/Nmamit-Annika/Disaster-Management/refs/heads/main/Edge AI Telematics Solution-ATC-3750-IP7-6C.jpg" alt="Disaster Management" loading="lazy">
+                    <div class="card-content">
+                        <h3>Challenges in Implementation</h3>
+                        <p>Understanding the limitations and obstacles in applying deep learning to real-world disaster scenarios.</p>
+                        <a href="challenges.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="methodology">
-    <h2>Methodology</h2>
-    <p>The process involves collecting historical data (weather, satellite, seismic), preprocessing it, extracting features, choosing algorithms like Decision Trees or Neural Networks, and training models to predict disaster occurrences.</p>
-</section>
+        <section aria-labelledby="about-heading">
+            <h2 id="about-heading">About the Project</h2>
+            <p>This research was conducted by students from the Department of Artificial Intelligence & Data Science at NMAM Institute of Technology (NMAMIT), Nitte. Our goal is to contribute to the growing field of AI applications in disaster management and mitigation.</p>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <a href="introduction.html" class="btn">Read Our Full Introduction</a>
+                <a href="references.html" class="btn">View References</a>
+            </div>
+        </section>
+    </main>
 
-<section id="ai">
-    <h2>AI Techniques</h2>
-    <ul>
-        <li><strong>Machine Learning:</strong> Decision Trees, Random Forest, Support Vector Machines (SVM)</li>
-        <li><strong>Deep Learning:</strong> CNNs for image data, LSTMs for time-series and social media analysis</li>
-        <li><strong>Tools Used:</strong> Satellite data, IoT, UAVs, Social Media</li>
-    </ul>
-</section>
-
-<section id="case">
-    <h2>Case Studies</h2>
-    <ul>
-        <li><strong>Houston Floods (2020):</strong> Neural Networks predicted floods using rainfall data.</li>
-        <li><strong>Japan Earthquake Alerts:</strong> SVMs helped forecast seismic events in real-time.</li>
-        <li><strong>Hurricanes in the Caribbean:</strong> CNNs analyzed satellite data to predict storm paths.</li>
-        <li><strong>Kerala Flood Relief:</strong> Big Data & AI on AWS improved rescue coordination.</li>
-    </ul>
-</section>
-
-<section id="future">
-    <h2>Future Trends & Challenges</h2>
-    <p>More research is needed in long-term disaster recovery using ML/DL. Challenges include lack of labeled data, noisy social media, and ensuring ethical, transparent AI systems. Crowdsourcing and web crawling can improve data collection.</p>
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: yourname@example.com</p>
-    <p>Phone: +91-12345-67890</p>
-    <p>Institution: NMAM Institute of Technology</p>
-</section>
-
-<footer>
-    <p>© 2025 Disaster AI Project | All rights reserved</p>
-</footer>
-
-<script>
-    // Toggle Menu for Mobile View
-    function toggleMenu() {
-        const nav = document.querySelector('nav');
-        nav.classList.toggle('open');
-    }
-</script>
-
+    <footer role="contentinfo">
+        <p>&copy; 2025 Natural Disaster AI Project. All rights reserved.</p>
+        <p>Department of Artificial Intelligence & Data Science, NMAM Institute of Technology, Nitte</p>
+    </footer>
 </body>
 </html>
